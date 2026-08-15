@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday, My Love 💕</title>
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+
+    <style>
+        body {
+             background: linear-gradient(
+                to bottom,
+                #000000,
+                #16040b,
+                #320814
+             );
+
+             background-attachment: fixed;
+             background-repeat: no-repeat;
+             background-size: cover;
+
+             color: white;
+             margin: 0;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+
+             min-height: 100vh;
+
+             text-align: center;
+             font-family: Arial, sans-serif;
+             margin: 0;
+
+             overflow-y: auto;
+             overflow-x: hidden;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 55px;
+            text-shadow:
+                0 0 10px #6d0f1f,
+                0 0 20px #8b1e2d,
+                0 0 30px #8b1e2d;
+        }
+
+        p {font-size: 24px;
+        color: #cccccc
+        }
+
+        .dots::after {
+            content: "";
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { content: ""; }
+            25% { content: "."; }
+            50% { content: ".."; }
+            75% { content: "..."; }
+            100% { content: ""; }
+        }
+
+        .loading-bar {
+            width:90%;
+            max-width: 500px;
+            height: 10px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .loading-bar::before {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 100%;
+            background: white;
+            animation: load 5s linear forwards;
+        }
+
+        @keyframes load {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        #loading-screen{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #password-screen {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #birthday-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #mailbox-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #friend1-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #friend2-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #friend3-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #final-message-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #letter-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            width: 100%;
+            padding: 50px 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+
+            background: #6d0f1f;
+            color: white;
+            border: 2px solid white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(109,15,31,.6);
+
+        }
+
+        button:hover {
+
+            background: #8b1e2d;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(139,30,45,.8);
+
+        }
+
+        .mail-btn{
+
+            width:90%;
+            max-width:420px;
+            height:70px;
+
+            background:linear-gradient(to right, #111,#4b0d1d);
+
+            border:2px solid white;
+            border-radius:16px;
+
+            color:white;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:0 25px;
+
+            font-size:22px;
+            font-weight:bold;
+
+            cursor:pointer;
+
+            transition:.3s;
+
+        }
+
+        .mail-btn:hover{
+
+            transform:translateY(-4px);
+
+            background:linear-gradient(to right,#4b0d1d,#6d0f1f);
+
+        }
+
+        .mail-left{
+
+            display:flex;
+            align-items:center;
+            gap:12px;
+
+        }
+
+        .mail-heart{
+
+            font-size:24px;
+
+        }
+
+        .sparkles{
+            position:fixed;
+            inset:0;
+            pointer-events:none;
+            z-index:0;
+        }
+
+        .sparkles span{
+            position:absolute;
+            width:4px;
+            height:4px;
+            background:white;
+            border-radius:50%;
+            animation:twinkle 4s infinite ease-in-out;
+            opacity:.2;
+            box-shadow:
+                0 0 6px white,
+                0 0 12px #ff8fd8;
+        }
+
+        .sparkles span:nth-child(1){top:10%;left:15%;animation-delay:0s;}
+        .sparkles span:nth-child(2){top:22%;left:80%;animation-delay:1s;}
+        .sparkles span:nth-child(3){top:35%;left:50%;animation-delay:2s;}
+        .sparkles span:nth-child(4){top:55%;left:10%;animation-delay:3s;}
+        .sparkles span:nth-child(5){top:70%;left:90%;animation-delay:1.5s;}
+        .sparkles span:nth-child(6){top:80%;left:35%;animation-delay:.5s;}
+        .sparkles span:nth-child(7){top:15%;left:60%;animation-delay:2.5s;}
+        .sparkles span:nth-child(8){top:45%;left:75%;animation-delay:1.2s;}
+        .sparkles span:nth-child(9){top:65%;left:45%;animation-delay:2.8s;}
+        .sparkles span:nth-child(10){top:88%;left:20%;animation-delay:3.2s;}
+
+        @keyframes twinkle{
+
+            0%,100%{
+                transform:scale(.4);
+                opacity:.15;
+            }
+
+            50%{
+                transform:scale(1.8);
+                opacity:1;
+            }
+
+        }
+
+        #loading-screen,
+        #password-screen,
+        #birthday-page,
+        #album-page,
+        #mailbox-page,
+        #friend1-page,
+        #friend2-page,
+        #friend3-page,
+        #final-message-page,
+        #letter-page{
+            position: relative;
+            z-index: 1;
+        }
+
+        #album-page{
+            display:none;
+            flex-direction:column;
+            align-items:center;
+            width:100%;
+            padding:40px 20px;
+            box-sizing:border-box;
+        }
+
+        .photo-grid{
+            width:100%;
+            max-width:900px;
+
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+            gap:18px;
+
+            margin-top:30px;
+        }
+
+        .photo-grid img{
+
+            width:100%;
+            aspect-ratio:1;
+
+            object-fit:cover;
+
+            border-radius:18px;
+
+            border:3px solid white;
+
+            box-shadow:
+                0 0 15px rgba(255,255,255,.15);
+            
+            transition:.3s;
+        }
+
+        .photo-grid img:nth-child(odd){
+            transform:rotate(-4deg);
+        }
+
+        .photo-grid img:nth-child(even){
+            transform:rotate(4deg);
+        }
+
+        .photo-grid img:hover{
+
+            transform:scale(1.08) rotate(0deg);
+
+        }
+
+        @media (max-width: 600px){
+
+            h1{
+                font-size:38px;
+            }
+
+            h2{
+                font-size:26px;
+            }
+
+            p{
+                font-size:18px;
+                line-height:1.8;
+            }
+
+            button{
+                font-size:17px;
+                padding:12px 22px;
+            }
+
+            .mail-btn{
+                font-size:18px;
+                height:60px;
+            }
+
+            #letter-page{
+                padding:30px 15px
+            }
+
+            #letter-page p{
+                max-width:100%;
+                font-size:20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="sparkles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="loading-screen">
+        <h1> A birthday surprise</h1>
+
+        <p>is being prepared<span class="dots"></span></p>
+
+        <div class="loading-bar"></div>
+
+    </div>
+
+    <div id="password-screen">
+
+        <h1>🎁 Your Gift Awaits</h1>
+        <p>Only my favorite person can enter.</p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter the secret password">
+        
+        <br><br>
+
+        <button onclick="checkPassword()">
+            Unlock 💕
+        </button>
+    </div>
+
+    <div id="birthday-page">
+
+        <h1>Welcome, Mahal ko! 💕</h1>
+
+        <p class="subtitle">
+            I've been waiting for you... 💕
+        </p>
+
+        <button id="continue-btn" onclick="openLetter()">
+            Continue 💕
+        </button>
+
+    </div>
+
+    <div id="album-page">
+
+    <h1>📸</h1>
+
+    <h2>Little Memory Album</h2>
+
+    <p>
+    Before opening your birthday letters,
+    I wanted you to look back on some memories with everyone. 💕
+    </p>
+
+    <div class="photo-grid">
+    
+    <img src="photos/photo1.jpg">
+    <img src="photos/photo2.jpg">
+    <img src="photos/photo3.jpg">
+    <img src="photos/photo4.jpg">
+    <img src="photos/photo5.jpg">
+    <img src="photos/photo6.jpg">
+    <img src="photos/photo7.jpg">
+    <img src="photos/photo8.jpg">
+    <img src="photos/photo9.jpg">
+    <img src="photos/photo10.jpg">
+    <img src="photos/photo11.jpg">
+    <img src="photos/photo12.jpg">
+    <img src="photos/photo13.jpg">
+    <img src="photos/photo14.jpg">
+    <img src="photos/photo15.jpg">
+    <img src="photos/photo16.jpg">
+    <img src="photos/photo17.jpg">
+    <img src="photos/photo18.jpg">
+    <img src="photos/photo19.jpg">
+    <img src="photos/photo20.jpg">
+    <img src="photos/photo21.jpg">
+    <img src="photos/photo22.jpg">
+    <img src="photos/photo23.jpg">
+    <img src="photos/photo24.jpg">
+    <img src="photos/photo25.jpg">
+    <img src="photos/photo26.jpg">
+    <img src="photos/photo27.jpg">
+    <img src="photos/photo28.jpg">
+    <img src="photos/photo29.jpg">
+    <img src="photos/photo30.jpg">
+    <img src="photos/photo31.jpg">
+    <img src="photos/photo32.jpg">
+    <img src="photos/photo33.jpg">
+    <img src="photos/photo34.jpg">
+    <img src="photos/photo35.jpg">
+    <img src="photos/photo36.jpg">
+    <img src="photos/photo37.jpg">
+    <img src="photos/photo38.jpg">
+    <img src="photos/photo39.jpg">
+    <img src="photos/photo40.jpg">
+    <img src="photos/photo41.jpg">
+    <img src="photos/photo42.jpg">
+    <img src="photos/photo43.jpg">
+    <img src="photos/photo44.jpg">
+    <img src="photos/photo45.jpg">
+    <img src="photos/photo46.jpg">
+    <img src="photos/photo47.jpg">
+    <img src="photos/photo48.jpg">
+    <img src="photos/photo49.jpg">
+    <img src="photos/photo50.jpg">
+    <img src="photos/photo51.jpg">
+    <img src="photos/photo52.jpg">
+    <img src="photos/photo53.jpg">
+    <img src="photos/photo54.jpg">
+    <img src="photos/photo55.jpg">
+    <img src="photos/photo56.jpg">
+    <img src="photos/photo57.jpg">
+    <img src="photos/photo58.jpg">
+    <img src="photos/photo59.jpg">
+    <img src="photos/photo60.jpg">
+    <img src="photos/photo61.jpg">
+    <img src="photos/photo62.jpg">
+    <img src="photos/photo63.jpg">
+    <img src="photos/photo64.jpg">
+    <img src="photos/photo65.jpg">
+    <img src="photos/photo66.jpg">
+    <img src="photos/photo67.jpg">
+    <img src="photos/photo68.jpg">
+    <img src="photos/photo69.jpg">
+    <img src="photos/photo70.jpg">
+    <img src="photos/photo71.jpg">
+    <img src="photos/photo72.jpg">
+    <img src="photos/photo73.jpg">
+    <img src="photos/photo74.jpg">
+    <img src="photos/photo75.jpg">
+    <img src="photos/photo76.jpg">
+    <img src="photos/photo77.jpg">
+    <img src="photos/photo78.jpg">
+    <img src="photos/photo79.jpg">
+    <img src="photos/photo80.jpg">
+    <img src="photos/photo81.jpg">
+    <img src="photos/photo82.jpg">
+    <img src="photos/photo83.jpg">
+    <img src="photos/photo84.jpg">
+    <img src="photos/photo85.jpg">
+    <img src="photos/photo86.jpg">
+    <img src="photos/photo87.jpg">
+    <img src="photos/photo88.jpg">
+    <img src="photos/photo89.jpg">
+    <img src="photos/photo90.jpg">
+    <img src="photos/photo91.jpg">
+    <img src="photos/photo92.jpg">
+    <img src="photos/photo93.jpg">
+    <img src="photos/photo94.jpg">
+    <img src="photos/photo95.jpg">
+    <img src="photos/photo96.jpg">
+    <img src="photos/photo97.jpg">
+    <img src="photos/photo98.jpg">
+    <img src="photos/photo99.jpg">
+    <img src="photos/photo100.jpg">
+    <img src="photos/photo101.jpg">
+    <img src="photos/photo102.jpg">
+    <img src="photos/photo103.jpg">
+    <img src="photos/photo104.jpg">
+    <img src="photos/photo105.jpg">
+    <img src="photos/photo106.jpg">
+    <img src="photos/photo107.jpg">
+    <img src="photos/photo108.jpg">
+    <img src="photos/photo109.jpg">
+    <img src="photos/photo110.jpg">
+    <img src="photos/photo111.jpg">
+    <img src="photos/photo112.jpg">
+
+    </div>
+
+    <br><br>
+
+    <button onclick="openMailbox()">
+    Open Birthday Mail 💌
+    </button>
+    </div>
+
+    <div id="mailbox-page">
+        
+        <h1>📬</h1>
+
+        <h2>You've Got Birthday Mail</h2>
+
+        <p>
+            Four people left you something special.
+            <br>
+            Open each letter one by one. 💕
+        </p>
+
+        <button
+        class="mail-btn"
+        id="letter-btn"
+        onclick="openFriend1()">
+
+        <div class="mail-left">
+        💌
+        <span>From: Gess</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+
+        </button>
+
+        <br><br>
+
+        <button
+        class="mail-btn"
+        id="letter2-btn"
+        onclick="openFriend2()">
+    
+        <div class="mail-left">
+        💌
+        <span>From: Louie</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+
+        </button>
+
+        <br><br>
+
+        <button 
+        class="mail-btn"
+        id="letter3-btn"
+        onclick="openFriend3()">
+        
+        <div class="mail-left">
+        💌
+        <span>From: Ate Fio</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+        
+        </button>
+
+        <br><br>
+
+        <button
+        class="mail-btn"
+        id="letter4-btn">
+
+        <div class="mail-left">
+        💕
+        <span>From: ???</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+
+        </button>
+
+    </div>
+
+    <div id="friend1-page">
+
+        <h1>💌</h1>
+
+        <h2>From: Gess</h2>
+
+        <p style="max-width:700px; line-height:1.8;">
+
+            Happy birthday maot!
+
+            <br><br>
+
+            Sana ay maging masaya ang iyong kaarawan! At kahit na di mo birthday sana ay maging masaya ka araw araw despite mga challenges that might come to you! Labyu kahit ang maot mo! Wahahahhahaha!
+
+            <br><br>
+
+            P.S.
+
+            <br>
+
+            Pasharon naman ng handa mo! Ako na bahala magdala ng tupperware hahahaha
+
+            <br><br>
+
+            P.P.S.
+
+            <br>
+
+            Stay maot! 😁
+
+        </p>
+
+        <button id="friend1-next-btn" onclick="backToMailbox1()">
+            Continue ❤️
+        </button>
+
+    </div>
+
+    <div id="friend2-page">
+
+        <h1>💌</h1>
+
+        <h2>From: Louie</h2>
+
+        <p style="max-width:700px; line-height:1.8;">
+
+            Perd maligayang kaarawan sayo! pahingi shanghai at pa sharon ng handa Hahahaha. langya bumata na naman tayo ngayon taon. Bago pa lang tayo mag ka kilala pero kita ko naman mabuti ka tao dahil August leo boys tayo. salamay sa pag kaibigan. Pawang mahiling ko lang sayo naway magandang kalusugan, matupad ang mga pangarap mo at tunay na ligaya sa buhay. enjoy sa araw mo. amping kanunay!
+
+            <br><br>
+
+            HAPPIE BEERDAY PERD!
+
+            <br><br>
+
+            From Perd Lo
+        </p>
+
+        <button id="friend2-next-btn" onclick="backToMailbox2()">
+            Continue ❤️
+        </button>
+
+    </div>
+
+    <div id="friend3-page">
+
+        <h1>💌</h1>
+
+        <h2>From: Ate Fio</h2>
+
+        <p style="max-width:700px; line-height:1.8;">
+
+            Happy birthday bisprin!
+
+            <br><br>
+
+            Sobrang thankful ko kay lord na meron ikaw na sobrang mabuting kaibigan and also I consider na kapatid. Thank youuuu sa walang sawang pakikinig.. always ko dasal na maging happy ikaw palage.. more more birthdays to comeee.. stay strong kayo ni ambyy.. andito lang ako always para sa inyo.. i love youuu
+            
+            <br><br>
+
+            Love,
+            <br>
+            Ate Fio 💜
+        </p>
+
+        <button id="friend3-next-btn" onclick="backToMailbox3()">
+            Continue ❤️
+        </button>
+
+    </div>
+
+    <div id="final-message-page">
+
+        <h1>💕</h1>
+
+        <h2>One last envelope has been waiting patiently for you...</h2>
+
+        <p>
+            I wanted you to read everyone else's letters first.
+            <br><br>
+            Now there's one final envelope waiting just for you.
+        </p>
+
+        <button id="final-next-btn" onclick="openFinalLetter()">
+            Continue 💕
+        </button>
+        
+    </div>
+
+    <div id="letter-page">
+
+        <h1>✉️</h1>
+
+        <h2>Reserved for One Final Letter 💕</h2>
+
+        <button id="open-letter-btn" onclick="showLetter()">
+            Open Letter 💕
+        </button>
+        
+    </div>
+
+    <script>
+    
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        document.getElementById("password-screen").style.display = "flex";
+    }, 5000);
+
+    let attempts = 0;
+
+    function checkPassword() {
+
+        let password = document.getElementById("password").value;
+
+        if (password === "042626") {
+
+            document.getElementById("password-screen").style.display = "none";
+            document.getElementById("birthday-page").style.display = "flex";
+
+        } else {
+
+            attempts++;
+
+            if (attempts === 1) {
+
+                alert("Hmmm...\n\nThat's not our special date.");
+
+            } else if (attempts === 3) {
+
+                alert("You're really making me work today. 🥹💕");
+
+            } else if (attempts === 5) {
+
+                alert("Okay okay...\n\nI know it's really you.\n\nBut I still won't let you in.\n\nThink about our special day. 💕\n\n💡 Hint: MMDDYY 😉");
+            
+            } else {
+
+                alert("Still not quite right! 💕")
+
+            }
+        }
+    }
+
+    function openLetter() {
+
+        document.getElementById("birthday-page").style.display = "none";
+        document.getElementById("album-page").style.display = "flex";
+
+    }
+
+    function openMailbox() {
+
+        document.getElementById("album-page").style.display="none";
+        document.getElementById("mailbox-page").style.display="flex";
+
+    }
+
+    function openFriend1() {
+
+        document.getElementById("mailbox-page").style.display = "none";
+        document.getElementById("friend1-page").style.display = "flex";
+
+    }
+
+    function backToMailbox1() {
+
+        document.getElementById("friend1-page").style.display = "none";
+        document.getElementById("mailbox-page").style.display = "flex";
+
+        document.getElementById("letter-btn").innerHTML = `
+        <div class="mail-left">
+        ✅
+        <span>From: Gess</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+        `;
+
+    }
+
+    function openFriend2() {
+
+        document.getElementById("mailbox-page").style.display = "none";
+        document.getElementById("friend2-page").style.display = "flex";
+
+    }
+
+    function backToMailbox2() {
+
+        document.getElementById("friend2-page").style.display = "none";
+        document.getElementById("mailbox-page").style.display = "flex";
+
+        document.getElementById("letter2-btn").innerHTML = `
+        <div class="mail-left">
+        ✅
+        <span>From: Louie</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+        `;
+
+    }
+
+    function openFriend3() {
+
+        document.getElementById("mailbox-page").style.display = "none";
+        document.getElementById("friend3-page").style.display = "flex";
+
+    }
+
+    function backToMailbox3() {
+
+        document.getElementById("friend3-page").style.display = "none";
+        document.getElementById("final-message-page").style.display = "flex";
+
+        document.getElementById("letter3-btn").innerHTML = `
+        <div class="mail-left">
+        ✅
+        <span>From: Ate Fio</span>
+        </div>
+
+        <div class="mail-heart">
+        ❤️
+        </div>
+        `;
+
+    }
+
+    function openFinalLetter() {
+
+        document.getElementById("final-message-page").style.display = "none";
+        document.getElementById("letter-page").style.display = "flex";
+
+    }
+
+    function showLetter() {
+
+        window.scrollTo(0, 0);
+
+        document.getElementById("letter-page").innerHTML = `
+
+            <h1>💕</h1>
+
+            <h2>Hello, My Love!</h2>
+
+            <p style="max-width:700px; line-height:1.8;">
+
+            Happiest birthday to the love of my life, my forever and always 💕
+
+            <br><br>
+
+            It's only been a few months since we met, but somehow it feels like you've become someone I've known for longer. There aren't enough words to describe how grateful I am that our paths crossed or how lucky I am that life led me to you. Sometimes, I think about how everything had to happen exactly the way it did for us to meet, and I can't help but smile because, out of all the people I could have met, I met you.
+
+            <br><br>
+
+            I know this isn't much, and I know we can't spend today together in person. If I could, I'd spend the whole day celebrating with you, making memories, and doing everything I could to make you smile. But until we finally get that chance, I hope this little gift makes you feel like I'm right beside you, celebrating your special day with you.
+
+            <br><br>
+
+            Today is all about you.
+
+            <br><br>
+
+            I hope it reminds you of just how loved and appreciated you are, not only by me, but by everyone whose lives you've touched. I hope you spend today smiling, laughing, and making memories you'll look back on fondly. You deserve a birthday that's just as beautiful as your heart.
+
+            <br><br>
+
+            As you celebrate another year of your life, my wish for you is simple. I hope you're always surrounded by people who love you wholeheartedly. I hope you continue chasing your dreams with confidence, and I hope life is kind to you every step of the way. More than anything, I hope you're blessed with good health, genuine happiness, and countless reason to smile every single day.
+
+            <br><br>
+
+            I hope this year brings you wonderful opportunities, peaceful days, exciting adventures, and moments that make your heart feel full. Whenever life becomes difficult, I hope you never forget how strong you are and how much you're capable of overcoming. No matter what happens, I'll always be cheering you on from the sidelines.
+
+            <br><br>
+
+            And if I could make one wish for us, it would be this: I hope this is only one of the many birthdays we'll get to celebrate together. I hope that one day, instead of writing you a birthday letter from afar, I'll get to hand it to you myself. I hope I get to celebrate by your side, sing Happy Birthday to you in person, hug you at midnight, and be there to see the smile on your face when you open your gifts. I know that day will come eventually, and I already find myself looking forward to it.
+
+            <br><br>
+
+            Until then, I'll keep celebrating every birthday with you, no matter how far apart we are.
+
+            <br><br>
+
+            Thank you for being born, my love. I'm so incredibly grateful that this world has you in it, because if it didn't, I would've never had the chance to meet as someone as wonderful as you.
+
+            <br><br>
+
+            Happy Birthday once again, Mahal ko.
+
+            <br><br>
+
+            I hope today brings you as much happiness as you've brought into my life.
+
+            <br><br>
+
+            I love you, always and forever.
+
+            <br><br>
+
+            To infinity and beyond.
+            To the moon and back. 🌙
+
+            <br><br>
+
+            Love,
+
+            <br><br>
+
+            Your Asawa 💕
+
+            </p>
+
+        `;
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        })
+    }
+
+    </script>
+    
+</body>
+</html> 
